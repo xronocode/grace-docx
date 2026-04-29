@@ -1,6 +1,6 @@
 # GRACE Office
 
-> Semantic markup for Office documents. GRACE-DOCX makes Word files section-aware and element-aware. GRACE-PPTX extends the same idea to PowerPoint decks with slide order, shape inventory, style fingerprints, contracts, and verification.
+> Semantic markup for Office documents. GRACE-DOCX is the stable Word bootstrap. GRACE-PPTX is an additional PowerPoint bootstrap preview that applies the same embedded protocol to slides and shapes.
 
 [![Version](https://img.shields.io/badge/version-v3.0.0-132238)](docs/release-v3.md)
 [![License: MIT](https://img.shields.io/badge/license-MIT-58b8a5.svg)](LICENSE)
@@ -26,11 +26,9 @@ GRACE solves this by adding a machine-readable layer inside the Office package i
 | Format | Bootstrap | Status | Navigation model |
 |---|---|---|---|
 | Word `.docx` | [grace-docx-bootstrap.md](grace-docx-bootstrap.md) | Stable v3 | H1 modules, paragraph ranges, typed document elements |
-| PowerPoint `.pptx` | [grace-pptx-bootstrap.md](grace-pptx-bootstrap.md) | Preview v1 | Slide modules, authoritative slide order, shape inventory |
+| PowerPoint `.pptx` | [grace-pptx-bootstrap.md](grace-pptx-bootstrap.md) | Preview add-on v1 | Slide modules, authoritative slide order, shape inventory |
 
-![GRACE-DOCX architecture](assets/grace-docx-architecture.svg)
-
-![GRACE-PPTX architecture](assets/grace-pptx-architecture.svg)
+GRACE-PPTX is additional functionality beside GRACE-DOCX. It is not a successor format and does not replace the DOCX bootstrap.
 
 ## What v3 Adds
 
