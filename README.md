@@ -7,8 +7,6 @@
 [![DOCX](https://img.shields.io/badge/DOCX-stable-58708f)](grace-docx-bootstrap.md)
 [![PPTX](https://img.shields.io/badge/PPTX-preview-bf7a22)](grace-pptx-bootstrap.md)
 
-![GRACE Office architecture](assets/grace-office-architecture.svg)
-
 ## Why This Exists
 
 Large Office documents are hostile to AI editing. A model has to scan thousands of XML nodes, infer where a section or slide module starts and ends, guess which table, chart, shape, or image is safe to change, and remember dependencies across a long context window.
