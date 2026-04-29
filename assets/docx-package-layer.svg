@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="620" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc">
+  <title id="title">DOCX package with GRACE layer</title>
+  <desc id="desc">A DOCX zip archive showing native Word parts plus added GRACE XML parts.</desc>
+  <rect width="1200" height="620" fill="#f7f8fb"/>
+  <text x="72" y="82" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="700" fill="#172033">A .docx is a ZIP package</text>
+  <text x="72" y="116" font-family="Inter, Arial, sans-serif" font-size="19" fill="#526076">GRACE-DOCX adds metadata parts without changing visible rendering.</text>
+
+  <rect x="112" y="174" width="420" height="314" rx="18" fill="#ffffff" stroke="#d8dee9" stroke-width="2"/>
+  <text x="152" y="224" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700" fill="#172033">Native Word parts</text>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#39465a">
+    <text x="152" y="278">word/document.xml</text>
+    <text x="152" y="316">word/styles.xml</text>
+    <text x="152" y="354">word/charts/chart1.xml</text>
+    <text x="152" y="392">word/media/image1.png</text>
+    <text x="152" y="430">word/diagrams/data1.xml</text>
+  </g>
+
+  <rect x="668" y="174" width="420" height="314" rx="18" fill="#132238"/>
+  <text x="708" y="224" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700" fill="#ffffff">Added GRACE parts</text>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#e8edf5">
+    <text x="708" y="278">word/grace-manifest.xml</text>
+    <text x="708" y="316">word/grace-graph.xml</text>
+    <text x="708" y="354">word/grace-contracts.xml</text>
+    <text x="708" y="392">word/grace-instructions.xml</text>
+    <text x="708" y="430">word/grace-verification.xml</text>
+  </g>
+  <path d="M556 331 H640" stroke="#58708f" stroke-width="4" marker-end="url(#arrow)"/>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#58708f"/>
+    </marker>
+  </defs>
+</svg>

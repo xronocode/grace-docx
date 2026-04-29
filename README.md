@@ -1,142 +1,162 @@
 # GRACE-DOCX
 
-> LLMs lose track of large documents. GRACE-DOCX embeds a navigation map, editing contracts, and verification rules directly inside the .docx — so any agent knows exactly where to go and what not to touch.
+> Element-aware semantic markup for Word documents. GRACE-DOCX embeds a navigation map, editing contracts, typed object inventory, and verification rules directly inside a `.docx`, so an AI agent can edit the document without guessing.
 
----
+[![Version](https://img.shields.io/badge/version-v3.0.0-132238)](docs/release-v3.md)
+[![License: MIT](https://img.shields.io/badge/license-MIT-58b8a5.svg)](LICENSE)
+[![Format](https://img.shields.io/badge/format-DOCX-58708f)](grace-docx-bootstrap.md)
 
-## The Problem
+![GRACE-DOCX architecture](assets/grace-docx-architecture.svg)
 
-Give an LLM a 50-page Word document and ask it to edit section 4.2. It reads all 4,000+ paragraphs, guesses where the section is, inserts something nearby, and has no idea that section 4.2 must stay in sync with Appendix B. By the fifth iteration it starts rewriting things you never asked it to touch.
+## Why This Exists
 
-This is **context rot** — the measurable degradation in output quality as input length grows. Research shows models effectively use only 10–20% of their stated context window [[1]](#references), and accuracy drops 30%+ when relevant content sits in the middle of a long context [[2]](#references). Larger context windows don't fix this; they just delay it.
+Large Word documents are hostile to AI editing. A model has to scan thousands of XML nodes, infer where a section starts and ends, guess which table or chart is safe to change, and remember cross-section dependencies across a long context window.
 
-Developers have solved this for codebases: semantic markup, knowledge graphs, explicit module boundaries. GRACE-DOCX applies the same approach to Word documents.
+That fails in predictable ways:
 
----
+- the agent edits the wrong section;
+- a table column structure changes accidentally;
+- chart images are treated as live charts;
+- SmartArt layout XML is modified instead of text data;
+- repeated edits drift away from the original document structure.
 
-## The Idea
+GRACE-DOCX solves this by adding a machine-readable GRACE layer inside the document itself. The visual rendering stays unchanged; the internal `.docx` package becomes self-describing.
 
-Instead of explaining the document structure in every prompt, embed that knowledge directly inside the `.docx` file — once. So any agent that opens the file immediately knows:
+## What v3 Adds
 
-- which sections exist and where they are
-- what can be edited and what cannot
-- what needs to stay in sync when something changes
-- how to verify nothing broke
+v1 answered: **where is the target section?**
 
-The agent doesn't guess. It follows a protocol embedded in the file itself.
+v3 adds the second question: **what exactly is inside that section, and how can it be edited safely?**
 
----
+![v1 to v3 transition](assets/v1-to-v3-transition.svg)
 
-## Origin
+GRACE-DOCX v3 inventories non-trivial document elements inside each H1 module:
 
-GRACE-DOCX is a port of the **GRACE methodology** (Graph-RAG Anchored Code Engineering) to Word documents.
+| Element type | Editable | Source of truth |
+|---|---:|---|
+| `TABLE-DATA` | Data rows and cell values | `word/document.xml` |
+| `TABLE-STRUCT` | Cell text only | `word/document.xml` |
+| `CHART-NATIVE` | Labels and values | `word/charts/chartN.xml` and optional embedded workbook |
+| `CHART-IMAGE` | No | `word/media/imageN.*`, readonly |
+| `CHART-SMARTART` | Text nodes only | `word/diagrams/dataN.xml` |
+| `VISUAL-IMAGE` | No | `word/media/imageN.*`, readonly |
+| `EMBEDDED` | No direct XML edit | Host application required |
 
-GRACE was designed and battle-tested by **Vladimir Ivanov** ([@turboplanner](https://t.me/turboplanner)) for AI-driven code generation: every module gets a contract before code is written, every code block gets semantic markers for navigation, a knowledge graph keeps the entire project map current.
-
-Original GRACE plugin for Claude Code: [osovv/grace-marketplace](https://github.com/osovv/grace-marketplace)
-
-GRACE-DOCX takes the same principles and applies them to `.docx` files.
-
----
+![Element type matrix](assets/element-type-matrix.svg)
 
 ## How It Works
 
-Drop one file into your chat along with the document:
+Attach the bootstrap prompt and a Word document to a capable AI agent:
 
-```
+```text
 [grace-docx-bootstrap.md]
 [your-document.docx]
 
 Run bootstrap.
 ```
 
-The agent analyzes the internal XML structure of the `.docx`, maps all H1/H2 headings, counts paragraphs and tables per section, detects cross-references — and **creates the markup itself, in a format that works for it**.
+The agent unpacks the `.docx`, analyzes Word XML, injects GRACE metadata, adds invisible bookmarks around every H1 section, and repacks the file.
 
-It embeds five XML metadata files directly inside the archive and injects navigation bookmarks into every section. The document becomes self-describing.
+After that, editing follows an embedded protocol:
 
-After bootstrap, you work like this:
+![Safe edit protocol](assets/safe-edit-protocol.svg)
 
-```
-[document_GRACE.docx]
+The agent reads the manifest, locates the target module in the graph, checks typed elements, applies the relevant contract, performs the edit, runs verification, and returns a repacked `.docx`.
 
-Add a new clause to the "Approval Process" section:
-purchases over $50,000 require CFO sign-off.
-```
+## Embedded Parts
 
-The agent reads the embedded map, finds the right section in O(1), checks the contract for that module, makes the edit surgically, checks must-sync dependencies, verifies structure, returns the file.
-
----
-
-## What Gets Embedded
-
-GRACE-DOCX adds five XML files to `word/` inside the archive:
+GRACE-DOCX adds five XML files under `word/`:
 
 | File | Purpose |
-|------|---------|
-| `grace-manifest.xml` | Entry point, protocol, output policy |
-| `grace-graph.xml` | Module map with paragraph ranges and bookmarks |
-| `grace-contracts.xml` | Per-module editing rules (can/cannot/must-sync) |
-| `grace-instructions.xml` | Agent behavioral principles |
+|---|---|
+| `grace-manifest.xml` | Discovery beacon, read order, output policy |
+| `grace-instructions.xml` | Agent behavior rules and anti-patterns |
+| `grace-graph.xml` | Module map, paragraph ranges, bookmarks, element inventory |
+| `grace-contracts.xml` | Global rules, type contracts, module overrides |
 | `grace-verification.xml` | Structural invariants and post-edit checks |
 
-Each H1 section gets a `w:bookmarkStart/End` pair in `document.xml` — standard Word mechanism, invisible to users, precise navigation anchor for agents.
+It also adds standard invisible Word bookmarks:
 
-Word ignores these additions entirely. The document renders identically before and after bootstrap.
+```xml
+<w:bookmarkStart w:id="100" w:name="GRACE_M-XXX"/>
+...
+<w:bookmarkEnd w:id="100"/>
+```
 
----
+![DOCX package contents](assets/docx-package-layer.svg)
 
 ## Repository Structure
 
-```
+```text
 grace-docx/
-├── grace-docx-bootstrap.md   # The init prompt — drop into any chat with your .docx
-├── README.md                 # This document
-└── grace/                    # additinal framework data for development purposes
-    ├── manifest.xml          # XML templates integrated and not required to run bootstrap 
-    ├── graph.xml
-    ├── contracts.xml
-    ├── instructions.xml
-    └── verification.xml
+├── grace-docx-bootstrap.md        # latest stable bootstrap prompt, currently v3
+├── grace-docx-bootstrap-v3.md     # explicit v3 copy
+├── archive/
+│   └── grace-docx-bootstrap-v1.md # previous section-aware version
+├── assets/                        # GitHub README diagrams
+├── docs/
+│   ├── release-v3.md
+│   ├── schema-v3.md
+│   ├── v3-transition.md
+│   └── powerpoint-roadmap.md
+├── CHANGELOG.md
+└── README.md
 ```
-
----
 
 ## Quick Start
 
-1. Download `grace-docx-bootstrap.md`
-2. Open Claude (or any capable LLM)
-3. Attach the prompt file and your `.docx`
-4. Say: `Run bootstrap`
-5. Download the returned `.docx` — it's now GRACE-enabled
+1. Download `grace-docx-bootstrap.md`.
+2. Open Claude, ChatGPT, Codex, or another agent that can inspect and edit `.docx` internals.
+3. Attach the bootstrap prompt and your `.docx`.
+4. Say `Run bootstrap`.
+5. Use the returned GRACE-enabled `.docx` for future edits.
 
----
+## Example Edit Request
 
-## References
+```text
+[contract_GRACE.docx]
 
-<a name="references"></a>
+In the Approval Process section, add a rule:
+purchases over $50,000 require CFO sign-off.
+```
 
-[1] Bulatov et al. (AIRI / MIPT) — **BABILong: Testing the Limits of LLMs with Long Context Reasoning Tasks**, NeurIPS 2024
-https://arxiv.org/abs/2406.10149
+The agent should:
 
-[2] Liu et al. (Stanford) — **Lost in the Middle: How Language Models Use Long Contexts**, TACL 2024
-https://arxiv.org/abs/2307.03172
+- read `word/grace-manifest.xml`;
+- locate the target module in `word/grace-graph.xml`;
+- inspect the module's `<ELEMENTS>`;
+- apply `TypeContracts` and module overrides from `word/grace-contracts.xml`;
+- update only the requested content;
+- run `word/grace-verification.xml` checks before returning the file.
 
-[3] Hong, Troynikov, Huber (Chroma) — **Context Rot: How Increasing Input Tokens Impacts LLM Performance**, 2025
-https://research.trychroma.com/context-rot
+## Current Release
 
----
+`v3.0.0` is the element-aware bootstrap release.
+
+See:
+
+- [Release notes](docs/release-v3.md)
+- [v3 transition guide](docs/v3-transition.md)
+- [v3 schema notes](docs/schema-v3.md)
+- [PowerPoint roadmap](docs/powerpoint-roadmap.md)
+- [GitHub publishing copy](docs/github-publishing.md)
+
+## Relationship To GRACE
+
+GRACE-DOCX ports the GRACE methodology to document files.
+
+GRACE stands for Graph-RAG Anchored Code Engineering: modules get contracts, semantic markers make navigation deterministic, and a graph keeps the system map current. GRACE-DOCX applies the same idea to Word documents by embedding the graph, contracts, and verification protocol into the `.docx` archive.
+
+Original GRACE plugin for Claude Code: [osovv/grace-marketplace](https://github.com/osovv/grace-marketplace)
+
+## Roadmap
+
+- Harden v3 on real `.docx` samples with complex tables, charts, images, and SmartArt.
+- Add runnable validators for GRACE-enabled `.docx` archives.
+- Add reference XML templates under `grace/`.
+- Prepare a sibling GRACE-PPTX bootstrap for PowerPoint decks.
+- Explore the same pattern for `.xlsx` workbooks.
 
 ## License
 
 MIT
-
----
-
-## Contributing
-
-Pull requests welcome. Especially interested in:
-- Edge cases with non-standard document structures
-- Implementations for other formats (`.xlsx`, `.pptx`)
-- Integrations with agent frameworks (LangChain, Claude Code, Cursor)
-
-If you run bootstrap on an interesting document and hit a problem — open an issue with the bootstrap report output.

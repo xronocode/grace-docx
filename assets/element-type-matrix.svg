@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="680" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
+  <title id="title">GRACE-DOCX v3 element types</title>
+  <desc id="desc">Matrix of typed document elements and their edit policies.</desc>
+  <rect width="1200" height="680" fill="#f7f8fb"/>
+  <text x="72" y="80" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="700" fill="#172033">v3 element contracts</text>
+  <text x="72" y="112" font-family="Inter, Arial, sans-serif" font-size="19" fill="#526076">Each object type has its own source of truth and edit policy.</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="72" y="158" width="1056" height="70" rx="12" fill="#132238"/>
+    <text x="104" y="202" font-size="18" font-weight="700" fill="#ffffff">Type</text>
+    <text x="348" y="202" font-size="18" font-weight="700" fill="#ffffff">Can edit</text>
+    <text x="678" y="202" font-size="18" font-weight="700" fill="#ffffff">Hard rule</text>
+
+    <g font-size="17">
+      <rect x="72" y="242" width="1056" height="54" rx="8" fill="#ffffff"/>
+      <text x="104" y="276" font-weight="700" fill="#172033">TABLE-DATA</text>
+      <text x="348" y="276" fill="#39465a">Values and appended rows</text>
+      <text x="678" y="276" fill="#39465a">Never change column count</text>
+
+      <rect x="72" y="306" width="1056" height="54" rx="8" fill="#eef2f7"/>
+      <text x="104" y="340" font-weight="700" fill="#172033">TABLE-STRUCT</text>
+      <text x="348" y="340" fill="#39465a">Cell text only</text>
+      <text x="678" y="340" fill="#39465a">No structural changes</text>
+
+      <rect x="72" y="370" width="1056" height="54" rx="8" fill="#ffffff"/>
+      <text x="104" y="404" font-weight="700" fill="#172033">CHART-NATIVE</text>
+      <text x="348" y="404" fill="#39465a">Labels and data values</text>
+      <text x="678" y="404" fill="#39465a">Edit chart XML, not drawing XML</text>
+
+      <rect x="72" y="434" width="1056" height="54" rx="8" fill="#eef2f7"/>
+      <text x="104" y="468" font-weight="700" fill="#172033">CHART-IMAGE</text>
+      <text x="348" y="468" fill="#39465a">Nothing by default</text>
+      <text x="678" y="468" fill="#39465a">Readonly raster export</text>
+
+      <rect x="72" y="498" width="1056" height="54" rx="8" fill="#ffffff"/>
+      <text x="104" y="532" font-weight="700" fill="#172033">CHART-SMARTART</text>
+      <text x="348" y="532" fill="#39465a">Text nodes</text>
+      <text x="678" y="532" fill="#39465a">Never edit layout source</text>
+
+      <rect x="72" y="562" width="1056" height="54" rx="8" fill="#eef2f7"/>
+      <text x="104" y="596" font-weight="700" fill="#172033">VISUAL-IMAGE / EMBEDDED</text>
+      <text x="348" y="596" fill="#39465a">Readonly</text>
+      <text x="678" y="596" fill="#39465a">Replace explicitly or use host app</text>
+    </g>
+  </g>
+</svg>
+

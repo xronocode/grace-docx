@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+  <title id="title">Safe edit protocol</title>
+  <desc id="desc">GRACE-DOCX edit flow from user request to verification and repacking.</desc>
+  <rect width="1200" height="520" fill="#fbfbfc"/>
+  <text x="72" y="78" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="700" fill="#172033">Safe edit protocol</text>
+  <g font-family="Inter, Arial, sans-serif" font-size="16" text-anchor="middle">
+    <g fill="#ffffff" stroke="#d8dee9" stroke-width="2">
+      <rect x="72" y="150" width="132" height="86" rx="12"/>
+      <rect x="230" y="150" width="132" height="86" rx="12"/>
+      <rect x="388" y="150" width="132" height="86" rx="12"/>
+      <rect x="546" y="150" width="132" height="86" rx="12"/>
+      <rect x="704" y="150" width="132" height="86" rx="12"/>
+      <rect x="862" y="150" width="132" height="86" rx="12"/>
+      <rect x="1020" y="150" width="132" height="86" rx="12"/>
+    </g>
+    <g fill="#172033" font-weight="700">
+      <text x="138" y="186">Request</text>
+      <text x="296" y="186">Manifest</text>
+      <text x="454" y="186">Graph</text>
+      <text x="612" y="186">Elements</text>
+      <text x="770" y="186">Contracts</text>
+      <text x="928" y="186">Edit</text>
+      <text x="1086" y="186">Verify</text>
+    </g>
+    <g fill="#526076">
+      <text x="138" y="213">user intent</text>
+      <text x="296" y="213">read order</text>
+      <text x="454" y="213">module</text>
+      <text x="612" y="213">object type</text>
+      <text x="770" y="213">permissions</text>
+      <text x="928" y="213">surgical</text>
+      <text x="1086" y="213">repack</text>
+    </g>
+  </g>
+  <g stroke="#58708f" stroke-width="3" marker-end="url(#arrow)">
+    <path d="M204 193 H228"/>
+    <path d="M362 193 H386"/>
+    <path d="M520 193 H544"/>
+    <path d="M678 193 H702"/>
+    <path d="M836 193 H860"/>
+    <path d="M994 193 H1018"/>
+  </g>
+  <rect x="232" y="310" width="736" height="86" rx="14" fill="#132238"/>
+  <text x="600" y="346" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" fill="#ffffff">The agent follows embedded document protocol</text>
+  <text x="600" y="374" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" fill="#d8e1ee">No broad rewrite, no guessed target, no blind XML edits</text>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#58708f"/>
+    </marker>
+  </defs>
+</svg>
+

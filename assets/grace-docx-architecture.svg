@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">GRACE-DOCX architecture</title>
+  <desc id="desc">A DOCX package with embedded GRACE manifest, graph, contracts, instructions, verification, bookmarks, and element inventory.</desc>
+  <rect width="1200" height="630" fill="#f7f8fb"/>
+  <rect x="56" y="64" width="1088" height="502" rx="18" fill="#ffffff" stroke="#d9dee8" stroke-width="2"/>
+  <text x="92" y="124" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="700" fill="#172033">GRACE-DOCX</text>
+  <text x="92" y="158" font-family="Inter, Arial, sans-serif" font-size="19" fill="#526076">Self-describing Word documents for AI agents</text>
+
+  <rect x="92" y="216" width="300" height="238" rx="12" fill="#eef2f7" stroke="#cfd7e3"/>
+  <text x="124" y="258" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700" fill="#172033">.docx package</text>
+  <text x="124" y="300" font-family="Inter, Arial, sans-serif" font-size="17" fill="#39465a">word/document.xml</text>
+  <text x="124" y="330" font-family="Inter, Arial, sans-serif" font-size="17" fill="#39465a">word/charts/chart1.xml</text>
+  <text x="124" y="360" font-family="Inter, Arial, sans-serif" font-size="17" fill="#39465a">word/media/image1.png</text>
+  <text x="124" y="390" font-family="Inter, Arial, sans-serif" font-size="17" fill="#39465a">word/diagrams/data1.xml</text>
+
+  <path d="M420 335 H510" stroke="#58708f" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="534" y="174" width="520" height="322" rx="14" fill="#132238"/>
+  <text x="570" y="220" font-family="Inter, Arial, sans-serif" font-size="27" font-weight="700" fill="#ffffff">Embedded GRACE layer</text>
+  <g font-family="Inter, Arial, sans-serif" font-size="18" fill="#e8edf5">
+    <text x="592" y="272">grace-manifest.xml</text>
+    <text x="592" y="312">grace-graph.xml with ELEMENTS</text>
+    <text x="592" y="352">grace-contracts.xml with TypeContracts</text>
+    <text x="592" y="392">grace-instructions.xml</text>
+    <text x="592" y="432">grace-verification.xml</text>
+  </g>
+  <g fill="#58b8a5">
+    <circle cx="572" cy="266" r="7"/>
+    <circle cx="572" cy="306" r="7"/>
+    <circle cx="572" cy="346" r="7"/>
+    <circle cx="572" cy="386" r="7"/>
+    <circle cx="572" cy="426" r="7"/>
+  </g>
+
+  <rect x="770" y="92" width="284" height="54" rx="27" fill="#ffe9b5" stroke="#e1bd64"/>
+  <text x="807" y="126" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" fill="#5c4316">visual rendering unchanged</text>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#58708f"/>
+    </marker>
+  </defs>
+</svg>
+
