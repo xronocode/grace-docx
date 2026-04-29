@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+- `grace-pptx-bootstrap.md` as a preview bootstrap for PowerPoint decks.
+- GRACE-PPTX v1 schema notes under `docs/pptx-schema-v1.md`.
+- PowerPoint support references in README and publishing docs.
+
 ## v3.0.0 - Element-Aware Bootstrap
 
 GRACE-DOCX v3 upgrades the bootstrap from section-level navigation to element-level document intelligence.
@@ -37,4 +45,3 @@ GRACE-DOCX v3 upgrades the bootstrap from section-level navigation to element-le
 - GRACE bookmarks.
 - Five embedded XML parts.
 - Module contracts and basic verification rules.
-

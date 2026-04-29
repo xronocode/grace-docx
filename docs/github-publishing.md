@@ -5,19 +5,20 @@ Use this page when filling out the GitHub repository sidebar, release page, and 
 ## Repository Description
 
 ```text
-Element-aware semantic markup for Word documents: maps sections, tables, charts, images, SmartArt, contracts, and verification rules inside .docx files for safer AI editing.
+Semantic markup for Office documents: maps Word sections and PowerPoint slides/shapes with embedded contracts, typed object inventory, and verification rules for safer AI editing.
 ```
 
 Shorter option:
 
 ```text
-Make .docx files self-describing for AI agents with embedded maps, contracts, typed elements, and verification.
+Make .docx and .pptx files self-describing for AI agents with embedded maps, contracts, typed elements, and verification.
 ```
 
 ## Topics
 
 ```text
 docx
+pptx
 openxml
 ai-agents
 document-automation
@@ -25,6 +26,7 @@ semantic-markup
 knowledge-graph
 llm
 word-documents
+powerpoint
 grace
 verification
 ```
@@ -42,12 +44,12 @@ https://habr.com/ru/articles/1020548/
 Recommended image:
 
 ```text
-assets/grace-docx-architecture.svg
+assets/grace-office-architecture.svg
 ```
 
 If GitHub rejects SVG for social preview, export this file to PNG and use the PNG version. The image should communicate:
 
-- `.docx` remains visually unchanged;
+- Office files remain visually unchanged;
 - GRACE metadata is embedded inside the package;
 - agents use manifest, graph, contracts, and verification instead of guessing.
 
@@ -68,17 +70,23 @@ v3 makes GRACE-DOCX element-aware. The bootstrap now maps tables, native charts,
 Recommended first visual:
 
 ```text
-assets/grace-docx-architecture.svg
+assets/grace-office-architecture.svg
 ```
 
 Recommended second visual:
 
 ```text
-assets/v1-to-v3-transition.svg
+assets/grace-docx-architecture.svg
+```
+
+Recommended third visual:
+
+```text
+assets/grace-pptx-architecture.svg
 ```
 
 ## PowerPoint Teaser
 
 ```text
-The same pattern is being prepared for PowerPoint: slide-aware and shape-aware GRACE metadata for .pptx decks.
+GRACE-PPTX preview is now included: slide-aware and shape-aware GRACE metadata for .pptx decks.
 ```

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-labelledby="title desc">
+  <title id="title">GRACE-PPTX architecture</title>
+  <desc id="desc">A PowerPoint deck with authoritative slide order, shape inventory, style fingerprint, contracts, and verification.</desc>
+  <rect width="1200" height="640" fill="#fbfbfc"/>
+  <rect x="58" y="62" width="1084" height="516" rx="18" fill="#ffffff" stroke="#d9dee8" stroke-width="2"/>
+  <text x="94" y="122" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="700" fill="#172033">GRACE-PPTX</text>
+  <text x="94" y="157" font-family="Inter, Arial, sans-serif" font-size="19" fill="#526076">Slide-aware and shape-aware PowerPoint decks for AI agents</text>
+
+  <rect x="94" y="214" width="294" height="262" rx="14" fill="#fff4e4" stroke="#e6bf7d"/>
+  <text x="126" y="258" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700" fill="#172033">.pptx package</text>
+  <g font-family="Inter, Arial, sans-serif" font-size="17" fill="#39465a">
+    <text x="126" y="304">ppt/presentation.xml</text>
+    <text x="126" y="336">ppt/slides/slideN.xml</text>
+    <text x="126" y="368">ppt/charts/chartN.xml</text>
+    <text x="126" y="400">ppt/media/imageN.png</text>
+    <text x="126" y="432">ppt/diagrams/dataN.xml</text>
+  </g>
+
+  <path d="M416 345 H500" stroke="#bf7a22" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="524" y="178" width="540" height="338" rx="14" fill="#132238"/>
+  <text x="562" y="224" font-family="Inter, Arial, sans-serif" font-size="27" font-weight="700" fill="#ffffff">Embedded GRACE layer</text>
+  <g font-family="Inter, Arial, sans-serif" font-size="18" fill="#e8edf5">
+    <text x="584" y="276">authoritative SlideOrder</text>
+    <text x="584" y="316">module map by slide positions</text>
+    <text x="584" y="356">shape inventory with cNvPr id/name</text>
+    <text x="584" y="396">StyleFingerprint for theme preservation</text>
+    <text x="584" y="436">contracts and verification rules</text>
+  </g>
+  <g fill="#ffbd66">
+    <circle cx="564" cy="270" r="7"/>
+    <circle cx="564" cy="310" r="7"/>
+    <circle cx="564" cy="350" r="7"/>
+    <circle cx="564" cy="390" r="7"/>
+    <circle cx="564" cy="430" r="7"/>
+  </g>
+
+  <rect x="752" y="92" width="312" height="54" rx="27" fill="#e9f2ff" stroke="#b8cbe4"/>
+  <text x="790" y="126" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" fill="#203a5f">slides and styling unchanged</text>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#bf7a22"/>
+    </marker>
+  </defs>
+</svg>

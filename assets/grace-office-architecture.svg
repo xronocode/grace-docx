@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-labelledby="title desc">
+  <title id="title">GRACE Office architecture</title>
+  <desc id="desc">GRACE Office adds embedded maps, contracts, typed inventories, and verification to DOCX and PPTX packages without changing visible rendering.</desc>
+  <rect width="1200" height="640" fill="#f7f8fb"/>
+  <rect x="54" y="54" width="1092" height="532" rx="20" fill="#ffffff" stroke="#d9dee8" stroke-width="2"/>
+
+  <text x="92" y="116" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="700" fill="#172033">GRACE Office</text>
+  <text x="92" y="154" font-family="Inter, Arial, sans-serif" font-size="19" fill="#526076">Self-describing Office files for AI agents</text>
+
+  <rect x="92" y="212" width="278" height="252" rx="14" fill="#eef4ff" stroke="#b8cbe4"/>
+  <text x="124" y="254" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700" fill="#172033">DOCX</text>
+  <text x="124" y="284" font-family="Inter, Arial, sans-serif" font-size="16" fill="#526076">stable v3</text>
+  <g font-family="Inter, Arial, sans-serif" font-size="17" fill="#39465a">
+    <text x="124" y="326">H1 modules</text>
+    <text x="124" y="358">paragraph ranges</text>
+    <text x="124" y="390">typed document elements</text>
+    <text x="124" y="422">Word bookmarks</text>
+  </g>
+
+  <rect x="830" y="212" width="278" height="252" rx="14" fill="#fff4e4" stroke="#e6bf7d"/>
+  <text x="862" y="254" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700" fill="#172033">PPTX</text>
+  <text x="862" y="284" font-family="Inter, Arial, sans-serif" font-size="16" fill="#526076">preview v1</text>
+  <g font-family="Inter, Arial, sans-serif" font-size="17" fill="#39465a">
+    <text x="862" y="326">slide order</text>
+    <text x="862" y="358">slide modules</text>
+    <text x="862" y="390">shape inventory</text>
+    <text x="862" y="422">style fingerprint</text>
+  </g>
+
+  <rect x="426" y="184" width="348" height="308" rx="16" fill="#132238"/>
+  <text x="600" y="232" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="700" fill="#ffffff">Embedded GRACE layer</text>
+  <g font-family="Inter, Arial, sans-serif" font-size="18" fill="#e8edf5">
+    <text x="480" y="286">grace-manifest.xml</text>
+    <text x="480" y="326">grace-graph.xml</text>
+    <text x="480" y="366">grace-contracts.xml</text>
+    <text x="480" y="406">grace-instructions.xml</text>
+    <text x="480" y="446">grace-verification.xml</text>
+  </g>
+  <g fill="#58b8a5">
+    <circle cx="458" cy="280" r="7"/>
+    <circle cx="458" cy="320" r="7"/>
+    <circle cx="458" cy="360" r="7"/>
+    <circle cx="458" cy="400" r="7"/>
+    <circle cx="458" cy="440" r="7"/>
+  </g>
+
+  <path d="M386 338 H418" stroke="#58708f" stroke-width="4" marker-end="url(#arrow-blue)"/>
+  <path d="M782 338 H814" stroke="#bf7a22" stroke-width="4" marker-end="url(#arrow-orange)"/>
+
+  <rect x="426" y="94" width="348" height="52" rx="26" fill="#eff7f4" stroke="#b8d9d1"/>
+  <text x="600" y="127" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" fill="#28584f">visible rendering unchanged</text>
+
+  <text x="600" y="544" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" fill="#526076">Agents navigate by embedded structure, not by long-context guessing.</text>
+
+  <defs>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#58708f"/>
+    </marker>
+    <marker id="arrow-orange" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#bf7a22"/>
+    </marker>
+  </defs>
+</svg>
