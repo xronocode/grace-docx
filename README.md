@@ -1,3 +1,5 @@
+
+
 # GRACE Office
 
 > Semantic markup for Office documents. GRACE-DOCX is the stable Word bootstrap. GRACE-PPTX is an additional PowerPoint bootstrap preview that applies the same embedded protocol to slides and shapes.
@@ -123,6 +125,7 @@ grace-docx/
 │   └── grace-docx-bootstrap-v1.md # previous section-aware version
 ├── assets/                        # GitHub README diagrams
 ├── docs/
+│   ├── github-publishing.md
 │   ├── pptx-schema-v1.md
 │   ├── release-v3.md
 │   ├── schema-v3.md
