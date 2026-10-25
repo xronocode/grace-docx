@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Проверка относительных ссылок в markdown
+      - name: Validate relative markdown links
         run: |
           python3 - <<'EOF'
           import re, pathlib, sys
